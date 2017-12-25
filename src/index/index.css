@@ -1,0 +1,28 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+header{
+	width: 100%;
+	height: 60px;
+	color: #555;
+	font-size: 24px;
+	font-weight: normal;
+	padding-left: 25px;
+	line-height: 60px;
+}
+.contentBox{
+	width: 100%;
+	height:calc(100% - 60px);
+}
+.navBox{
+	width: 225px;
+	height: 100%;
+	padding-top: 50px;
+	float: left;
+}
+.contentPage{
+	width: calc(100% - 225px);
+	height:100%;
+	float: left;
+}
