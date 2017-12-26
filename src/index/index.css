@@ -1,9 +1,11 @@
 *{
 	margin: 0;
 	padding: 0;
+	font-family: "微软雅黑";
+	color: #555;
 }
 header{
-	width: 100%;
+	width: calc(100% - 25px);
 	height: 60px;
 	color: #555;
 	font-size: 24px;
@@ -13,13 +15,48 @@ header{
 }
 .contentBox{
 	width: 100%;
-	height:calc(100% - 60px);
 }
 .navBox{
-	width: 225px;
-	height: 100%;
+	width: 223px;
+	height: calc(100% - 50px);
 	padding-top: 50px;
 	float: left;
+	background:#f5f5f5;
+	border: 1px solid #dcdcdc;
+	position: relative;
+}
+.navBox li{
+	width: 100%;
+	height: 80px;
+	line-height: 80px;
+	font-size: 18px;
+	border-bottom: 1px solid #dcdcdc;
+	position: relative;
+}
+.navBox li img{
+	position: absolute;
+	top: 24px;
+	left: 24px;
+	width: 32px;
+}
+.navBox li:first-child{
+	border-top: 1px solid #dcdcdc;
+}
+.navArrow{
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-left: 17px solid #0c7afe;
+	border-bottom: 10px solid transparent;
+	position: absolute;
+	left: 223px;
+}
+.navLink{
+	text-decoration: none;
+	display: block;
+	width: calc(100% - 80px);
+	height: 100%;
+	padding-left: 80px;
 }
 .contentPage{
 	width: calc(100% - 225px);

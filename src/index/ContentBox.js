@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import NavBox from './NavBox.js';
 import ContentPage from './ContentPage.js';
 
+var H = document.documentElement.clientHeight;
+console.log(H);
+var HeightStyle = {height:(H-62)+"px"}
+
 class ContentBox extends Component{
 	render(){
 		return(
-			<div className="contentBox">
+			<div className="contentBox" style={HeightStyle}>
 				<NavBox />
 				<ContentPage />
 			</div>
