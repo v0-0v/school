@@ -12,7 +12,7 @@ class ContentBox extends Component{
 		return(
 			<div className="contentBox" style={HeightStyle}>
 				<NavBox />
-				<ContentPage />
+				<ContentPage />123
 			</div>
 		);
 	}
