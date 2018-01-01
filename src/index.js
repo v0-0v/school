@@ -15,6 +15,6 @@ class SiteIndex extends Component{
 };
 
 ReactDOM.render(
-	<SiteIndex />, 
+	<SiteIndex />,
 	document.getElementById('root')
 );

@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import './index.css';
-import {
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-  BrowserRouter as Router,
-
-  Route
-
-} from 'react-router-dom';
 import Header from './indexHeader.js';
+import Team from '../pages/team';
+import Subject from '../pages/subject';
+import Scoring from '../pages/scoring';
+import Match from '../pages/match';
 
 class ContentPage extends Component{
 	render(){
@@ -15,10 +14,10 @@ class ContentPage extends Component{
 			<div className="contentPage">
 				<Router>
 					<div>
-					<Route exact path="/team" component={Header} />
-					<Route path="/subject" component={Header} />
-					<Route path="/scoring" component={Header} />
-					<Route path="/match" component={Header} />
+					<Route path="/team" component={Team} />
+					<Route path="/subject" component={Subject} />
+					<Route path="/scoring" component={Scoring} />
+					<Route path="/match" component={Match} />
 					</div>
 				</Router>
 			</div>
