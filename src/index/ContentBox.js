@@ -73,13 +73,11 @@ class ContentBox extends Component{
 						</li>
 						<div className="navArrow" style={this.state.topStyle}></div>
 					</ul>
-					<div className="contentPage">
-						<div>
+					<div className="contentPage"> 
 						<Route path="/" exact component={Team} />
 						<Route path="/subject" exact component={Subject} />
 						<Route path="/scoring" exact component={Scoring} />
 						<Route path="/match" exact component={Match} />
-						</div>
 					</div>
 				</div>
 			</Router>
