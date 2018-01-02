@@ -32,7 +32,7 @@ export default class Team extends Component {
 		alert("删除队伍,"+id)
 	}
 	handleSubmit = (e) => {
-		if(this.state.popState=="0"){
+		if(this.state.popState==="0"){
 			alert("添加队伍");
 		}else{
 			alert("修改信息,"+this.state.useId);

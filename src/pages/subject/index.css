@@ -22,6 +22,17 @@
 	text-align: center;
 	margin: 10px 0;
 	padding: 0 5px;
+	margin-right: 20px;
+	display: inline-block;
+}
+.header span{
+	float: right;
+	line-height: 50px;
+	font-size: 14px;
+}
+.header strong{
+	color: #0c7afe;
+	margin-left: 10px;
 }
 table{
 	width: 960px;
@@ -71,23 +82,23 @@ td button{
 td button:first-child{
 	margin-left: 0;
 }
-.teamPop{
+.subjectPop{
 	width: 350px;
-	height: 384px;
+	height: 255px;
 	border-radius: 5px;
 	background: #fff;
 	border: 1px solid #dcdcdc;
 	left: 50%;
 	top: 45%;
 	margin-left: -200px;
-	margin-top: -192px;
+	margin-top: -125px;
 	padding: 0 25px;
 	font-size: 24px;
 	color: #555;
 	line-height: 65px;
 	position: absolute;
 }
-.teamPop input{
+.subjectPop input{
 	width: 350px;
 	height: 53px;
 	border-radius: 5px;
