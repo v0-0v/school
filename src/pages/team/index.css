@@ -28,13 +28,17 @@ table{
 	margin: 40px auto;
 	text-align: center;
 }
+thead{
+	
+}
 tr{
 	height: 40px;
-}
-tr:nth-child(even){
 	background: #f5f5f5;
 }
-tr:nth-child(odd){
+tbody tr:nth-child(even){
+	background: #f5f5f5;
+}
+tbody tr:nth-child(odd){
 	background: #fafafa;
 }
 tr:last-child td{
@@ -73,7 +77,7 @@ td button:first-child{
 }
 .teamPop{
 	width: 350px;
-	height: 384px;
+	height: 485px;
 	border-radius: 5px;
 	background: #fff;
 	border: 1px solid #dcdcdc;
@@ -84,7 +88,7 @@ td button:first-child{
 	padding: 0 25px;
 	font-size: 24px;
 	color: #555;
-	line-height: 65px;
+	line-height: 60px;
 	position: absolute;
 }
 .teamPop input{

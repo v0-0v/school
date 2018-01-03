@@ -4,8 +4,8 @@ import './index.css';
 export default class Team extends Component {
 	state = {
 		teamList:[{"id":"001","name":"遥不可及","time":"2018-01-02"},
-				{"id":"002","name":"遥不可及","time":"2018-01-02"},
-				{"id":"003","name":"遥不可及","time":"2018-01-02"},
+				{"id":"002","name":"大智若愚","time":"2018-01-02"},
+				{"id":"003","name":"无坚不摧","time":"2018-01-02"},
 		],
 		popStyle:{display:"none"},
 		popState:"0",//弹窗状态，0为添加队伍，1为修改信息
@@ -63,7 +63,9 @@ export default class Team extends Component {
 				<div className="teamPop" style={this.state.popStyle}>
 					队伍名称
 					<input type="text" />
-					登陆密码
+					防守题目
+					<input type="password" />
+					正确答案
 					<input type="password" />
 					<div className="submitBox"><button onClick={this.handleSubmit}>提交</button></div>
 				</div>

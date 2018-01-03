@@ -6,6 +6,8 @@ export default class Subject extends Component {
 		subjectList:[{"id":"140522101","name":"1+1=?","team":"暂无"},
 				{"id":"140522102","name":"1+2=?","team":"遥不可及"},
 				{"id":"140522103","name":"1+3=?","team":"暂无"},
+				{"id":"140522104","name":"1+4=?","team":"暂无"},
+				{"id":"140522105","name":"1+5=?","team":"暂无"},
 		],
 		popStyle:{display:"none"},
 		popState:"0",//弹窗状态，0为添加题目，1为修改题目
@@ -75,10 +77,11 @@ export default class Subject extends Component {
 			var hou = hoursNow-hoursStart;
 			var min = hou*60+(minNow-minStart);
 			var sec = 1800-(min*60+(secNow-secStart));
+			var str = "";
 			if(sec>0){
-				var str = parseInt(sec/60)+"m"+sec%60+"s";//30分钟比赛的剩余时间
+				str = Number(sec/60)+"m"+sec%60+"s";//30分钟比赛的剩余时间
 			}else{
-				var str = "比赛结束，重新设置时间";
+				str = "比赛结束，重新设置时间";
 				clearInterval(timer);
 			}
 			this.setState({
@@ -129,6 +132,8 @@ export default class Subject extends Component {
 				</table>
 				<div className="subjectPop" style={this.state.popStyle}>
 					{this.state.popMess}
+					<input type="text" />
+					正确答案为？
 					<input type="text" />
 					<div className="submitBox"><button onClick={this.handleSubmit}>提交</button></div>
 				</div>

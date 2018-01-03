@@ -29,7 +29,6 @@ var HeightStyle = {height:(H-62)+"px"}
 
 class ContentBox extends Component{
 	state = {
-		index:0,
 		src:[team2,subject1,scoring1,match1],
 		topStyle:{top:"82px"},
 		teamStyle:{color:"#fff",background:"#0c7afe"},
