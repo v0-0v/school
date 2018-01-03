@@ -79,7 +79,7 @@ export default class Subject extends Component {
 			var sec = 1800-(min*60+(secNow-secStart));
 			var str = "";
 			if(sec>0){
-				str = Number(sec/60)+"m"+sec%60+"s";//30分钟比赛的剩余时间
+				str = parseInt(sec/60,0)+"m"+parseInt(sec%60,0)+"s";//30分钟比赛的剩余时间
 			}else{
 				str = "比赛结束，重新设置时间";
 				clearInterval(timer);
