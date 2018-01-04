@@ -74,3 +74,43 @@
 	line-height: 53px;
 	margin-top: 31px;
 }
+.matchFlagBox{
+	width: 920px;
+	height: 100%;
+	background: #fafafa;
+	border: 1px solid #dcdcdc;
+	padding: 0 20px;
+	font-size: 18px;
+	line-height: 45px;
+	overflow-y: auto;
+}
+.matchFlagBox::-webkit-scrollbar {/*去掉滑动条*/
+	display:none
+}
+.matchFlagBox input{
+	width: 700px;
+	height: 48px;
+	border: 1px solid #dcdcdc;
+	border-radius: 5px;
+}
+.matchFlagBox button{
+	width: 160px;
+	height: 50px;
+	border: 1px solid #dcdcdc;
+	background: #0c7afe;
+	color: #fff;
+	line-height: 50px;
+	float: right;
+	font-size: 18px;
+	border-radius: 5px;
+}
+.subjectListBox{
+	height: 95px;
+	width: 920px;
+	padding-left: 0;
+}
+.subjectListBox div{
+	padding-left: 25px;
+	width: 895px;
+	height: 50px;
+}
