@@ -23,11 +23,14 @@ export default class Flag extends Component {
 			matchState:matchState,
 		})
 	}
+	handlesubjectSubmit = (e,indexSubject) =>{
+		alert(this.state.subjectList[indexSubject].id);
+	}
 	render() {
 		const subjectList = this.state.subjectList.map((mess,index)=>{
 			let subjectInp = null;
 			if(this.state.matchState){
-				subjectInp =<div><input type="text"/><button>提交该题</button></div>;
+				subjectInp =<div><input type="text"/><button onClick={(e,indexSubject)=>{this.handlesubjectSubmit(e,index)}}>提交该题</button></div>;
 			}else{
 				subjectInp =<div><input type="text" disabled="disabled"/><button disabled="disabled">提交该题</button></div>;
 			}
