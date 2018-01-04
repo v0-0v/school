@@ -46,7 +46,7 @@ export default class Defense extends Component {
 	}
 	handleSubmit = (e) => {
 		var popStyle = {display:"none"};
-		//alert(this.state.rival,this.props.params.teamName);
+		alert(this.props.match.params.teamName+","+this.state.rival);
 		console.log(this.props)
 		this.setState({
 			popStyle:popStyle,
