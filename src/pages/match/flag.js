@@ -25,7 +25,7 @@ export default class Flag extends Component {
 	}
 	handlesubjectSubmit = (e,indexSubject) =>{
 		console.log(this.props)
-		alert(this.state.subjectList[indexSubject].id+","+this.props.match.params.teamName);
+		alert(this.state.subjectList[indexSubject].id);
 	}
 	render() {
 		const subjectList = this.state.subjectList.map((mess,index)=>{

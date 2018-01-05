@@ -46,7 +46,7 @@ export default class Defense extends Component {
 	}
 	handleSubmit = (e) => {
 		var popStyle = {display:"none"};
-		alert(this.props.match.params.teamName+","+this.state.rival);
+		alert(this.state.rival);
 		console.log(this.props)
 		this.setState({
 			popStyle:popStyle,
@@ -54,6 +54,7 @@ export default class Defense extends Component {
 	}
 	componentWillMount() {
 		//获取teamList，和record，并把teamList中本队伍去掉
+		console.log(this.props)
 	}
 	render() {
 		const denfenseTeam = this.state.teamList.map((mess,index)=>{
