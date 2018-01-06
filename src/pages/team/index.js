@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './index.css';
+import axios from 'axios';
+import baseUrl from '../../config/url.js';
 
 export default class Team extends Component {
 	state = {
@@ -10,6 +12,9 @@ export default class Team extends Component {
 		popStyle:{display:"none"},
 		popState:"0",//弹窗状态，0为添加队伍，1为修改信息
 		useId:"",//被操作的队伍id
+		teamName:"",//提交的队伍名
+		guardFlag:"",//提交的防守题目
+		answer:"",//提交的答案
 	}
 	handleAddTeam = (e) => {
 		var state = "0";
@@ -30,17 +35,55 @@ export default class Team extends Component {
 	}
 	handleRemoveTeam = (e,id) => {
 		alert("删除队伍,"+id)
+		axios.post(baseUrl.deleteTeam, {
+	        id: this.state.useId
+		})
+		.then(function (response) {
+		    console.log(response);
+		})
+		.catch(function (response) {
+		    console.log(response);
+		});
 	}
 	handleSubmit = (e) => {
 		if(this.state.popState==="0"){
 			alert("添加队伍");
+			axios.post(baseUrl.addTeam, {
+		        name: this.state.teamName,
+			    guardFlag: this.state.guardFlag,
+			    answer: this.state.answer,
+			    password: '123'
+			})
+			.then(function (response) {
+			    console.log(response);
+			})
+			.catch(function (response) {
+			    console.log(response);
+			});
 		}else{
 			alert("修改信息,"+this.state.useId);
+			axios.post(baseUrl.updateTeam, {
+				id: this.state.useId,
+		        name: this.state.teamName,
+			    guardFlag: this.state.guardFlag,
+			    answer: this.state.answer
+			})
+			.then(function (response) {
+			    console.log(response);
+			})
+			.catch(function (response) {
+			    console.log(response);
+			});
 		}
 		var style = {display:"none"};
 		this.setState({
 			popStyle:style,
 		});
+	}
+	handleChange = (e) =>{
+		var newState={};
+		newState[e.target.name]=e.target.value;
+		this.setState(newState);
 	}
 	render() {
 		const teamMess = this.state.teamList.map((mess,index)=>{
@@ -62,11 +105,11 @@ export default class Team extends Component {
 				</table>
 				<div className="teamPop" style={this.state.popStyle}>
 					队伍名称
-					<input type="text" />
+					<input type="text" name="teamName" onChange={this.handleChange} value={this.state.teamName}/>
 					防守题目
-					<input type="password" />
+					<input type="text" name="guardFlag" onChange={this.handleChange} value={this.state.guardFlag}/>
 					正确答案
-					<input type="password" />
+					<input type="text" name="answer" onChange={this.handleChange} value={this.state.answer}/>
 					<div className="submitBox"><button onClick={this.handleSubmit}>提交</button></div>
 				</div>
 			</div>

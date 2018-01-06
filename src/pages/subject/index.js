@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './index.css';
+import axios from 'axios';
+import baseUrl from '../../config/url.js';
 
 export default class Subject extends Component {
 	state = {
@@ -15,6 +17,8 @@ export default class Subject extends Component {
 		useId:"",//被操作的题目id
 		restTime:"未开始",
 		isStart:false,//比赛是否开始
+		flag:"",//要提交的题目详情
+		answer:"",//要提交的题目答案
 	}
 	handleAddSubject = (e) => {
 		var state = "0";
@@ -39,12 +43,42 @@ export default class Subject extends Component {
 	}
 	handleRemoveSubject = (e,id) =>{
 		alert("删除队伍,"+id)
+		axios.post(baseUrl.deleteFlag, {
+	        id: id,
+		})
+		.then(function (response) {
+		    console.log(response);
+		})
+		.catch(function (response) {
+		    console.log(response);
+		});
 	}
 	handleSubmit = (e) => {
 		if(this.state.popState==="0"){
 			alert("添加题目");
+			axios.post(baseUrl.addFlag, {
+		        flag: this.state.flag,
+		        answer: this.state.answer
+			})
+			.then(function (response) {
+			    console.log(response);
+			})
+			.catch(function (response) {
+			    console.log(response);
+			});
 		}else{
 			alert("修改题目,"+this.state.useId);
+			axios.post(baseUrl.updateFlag, {
+				id:this.state.useId,
+		        flag: this.state.flag,
+		        answer: this.state.answer
+			})
+			.then(function (response) {
+			    console.log(response);
+			})
+			.catch(function (response) {
+			    console.log(response);
+			});
 		}
 		var style = {display:"none"};
 		this.setState({
@@ -56,6 +90,16 @@ export default class Subject extends Component {
 			alert("比赛已经开始");
 		}else{
 			//向后台提交当前时间为开始时间
+			var nowTime = new Date();
+			axios.post(baseUrl.letStart, {
+		        startTime: nowTime
+			})
+			.then(function (response) {
+			    console.log(response);
+			})
+			.catch(function (response) {
+			    console.log(response);
+			});
 			var isStart = true;
 			var str = "30m00s";
 			this.setState({
@@ -65,7 +109,16 @@ export default class Subject extends Component {
 		}
 	}
 	countDownTime = (e) => {
-		var dataStart = new Date(2018,1,2,18,40,0);//获取开始时间
+		var dataStart = "";
+		axios.post(baseUrl.getStartTime, {})
+		.then(function (response) {
+		    console.log(response);
+		     dataStart = response;
+		})
+		.catch(function (response) {
+		    console.log(response);
+		});
+		//var dataStart = new Date(2018,1,2,18,40,0);//获取开始时间
 		var hoursStart = dataStart.getHours();
 		var minStart = dataStart.getMinutes();
 		var secStart = dataStart.getSeconds();
@@ -89,13 +142,27 @@ export default class Subject extends Component {
 			});
 		}.bind(this),1000);
 	}
+	handleChange = (e) =>{
+		var newState={};
+		newState[e.target.name]=e.target.value;
+		this.setState(newState);
+	}
 	componentWillMount() {
-		//如果已经开始
-		// var isStart = true;
-		// this.countDownTime()
-		// this.setState({
-		// 	isStart:isStart,
-		// });
+		var isStart = false;//比赛是否开始
+		axios.post(baseUrl.isStart, {})
+		.then(function (response) {
+		    console.log(response);
+		    isStart = response=="1"?true:false;
+		})
+		.catch(function (response) {
+		    console.log(response);
+		});
+		if(isStart){
+			this.countDownTime()
+			this.setState({
+				isStart:isStart,
+			});
+		}
 	}
 	componentDidMount() {
 		if(this.state.isStart){//如果比赛已经开始
@@ -132,9 +199,9 @@ export default class Subject extends Component {
 				</table>
 				<div className="subjectPop" style={this.state.popStyle}>
 					{this.state.popMess}
-					<input type="text" />
+					<input type="text" name="flag" onChange={this.handleChange} value={this.state.flag} />
 					正确答案为？
-					<input type="text" />
+					<input type="text" name="answer" onChange={this.handleChange} value={this.state.answer} />
 					<div className="submitBox"><button onClick={this.handleSubmit}>提交</button></div>
 				</div>
 			</div>
