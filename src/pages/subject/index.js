@@ -152,7 +152,7 @@ export default class Subject extends Component {
 		axios.post(baseUrl.isStart, {})
 		.then(function (response) {
 		    console.log(response);
-		    isStart = response=="1"?true:false;
+		    isStart = response==="1"?true:false;
 		})
 		.catch(function (response) {
 		    console.log(response);

@@ -62,7 +62,7 @@ export default class Flag extends Component {
 			src[indexNum]=down;
 		}else{
 			src = [];
-			for(var i=0;i<this.state.scoring.length;i++){
+			for(var j=0;j<this.state.scoring.length;j++){
 				src.push(down);
 			}
 			src[indexNum]=up;
