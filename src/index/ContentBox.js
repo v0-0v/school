@@ -24,7 +24,6 @@ import Scoring from '../pages/scoring';
 import Match from '../pages/match';
 
 var H = document.documentElement.clientHeight;
-console.log(H);
 var HeightStyle = {height:(H-62)+"px"}
 
 class ContentBox extends Component{

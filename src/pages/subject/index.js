@@ -6,7 +6,7 @@ import baseUrl from '../../config/url.js';
 export default class Subject extends Component {
 	state = {
 		subjectList:[{"id":"140522101","name":"1+1=?","team":"暂无"},
-				{"id":"140522102","name":"1+2=?","team":"遥不可及"},
+				{"id":"140522102","name":"1+2=?","team":"暂无"},
 				{"id":"140522103","name":"1+3=?","team":"暂无"},
 				{"id":"140522104","name":"1+4=?","team":"暂无"},
 				{"id":"140522105","name":"1+5=?","team":"暂无"},
@@ -19,6 +19,7 @@ export default class Subject extends Component {
 		isStart:false,//比赛是否开始
 		flag:"",//要提交的题目详情
 		answer:"",//要提交的题目答案
+		startTime:new Date(),
 	}
 	handleAddSubject = (e) => {
 		var state = "0";
@@ -91,33 +92,56 @@ export default class Subject extends Component {
 		}else{
 			//向后台提交当前时间为开始时间
 			var nowTime = new Date();
-			axios.post(baseUrl.letStart, {
-		        startTime: nowTime
-			})
-			.then(function (response) {
-			    console.log(response);
-			})
-			.catch(function (response) {
-			    console.log(response);
-			});
+			// axios.post(baseUrl.letStart, {
+		 //        startTime: nowTime
+			// })
+			// .then(function (response) {
+			//     console.log(response);
+			// })
+			// .catch(function (response) {
+			//     console.log(response);
+			// });
 			var isStart = true;
 			var str = "30m00s";
 			this.setState({
 				restTime:str,
 				isStart:isStart,
-			})
+				startTime:nowTime,
+			});
+			var hoursStart = nowTime.getHours();
+			var minStart = nowTime.getMinutes();
+			var secStart = nowTime.getSeconds();
+			var timer = setInterval(function(){
+				var dataNow = new Date();//获取现在时间
+				var hoursNow = dataNow.getHours();
+				var minNow = dataNow.getMinutes();
+				var secNow = dataNow.getSeconds();
+				var hou = hoursNow-hoursStart;
+				var min = hou*60+(minNow-minStart);
+				var sec = 1800-(min*60+(secNow-secStart));
+				var str = "";
+				if(sec>0){
+					str = parseInt(sec/60,0)+"m"+parseInt(sec%60,0)+"s";//30分钟比赛的剩余时间
+				}else{
+					str = "比赛结束，重新设置时间";
+					clearInterval(timer);
+				}
+				this.setState({
+					restTime:str,
+				});
+			}.bind(this),1000);
 		}
 	}
 	countDownTime = (e) => {
-		var dataStart = "";
-		axios.post(baseUrl.getStartTime, {})
-		.then(function (response) {
-		    console.log(response);
-		     dataStart = response;
-		})
-		.catch(function (response) {
-		    console.log(response);
-		});
+		var dataStart = new Date(2018,1,9,15,21,0);
+		// axios.post(baseUrl.getStartTime, {})
+		// .then(function (response) {
+		//     console.log(response);
+		//      dataStart = response;
+		// })
+		// .catch(function (response) {
+		//     console.log(response);
+		// });
 		//var dataStart = new Date(2018,1,2,18,40,0);//获取开始时间
 		var hoursStart = dataStart.getHours();
 		var minStart = dataStart.getMinutes();
@@ -149,30 +173,30 @@ export default class Subject extends Component {
 	}
 	componentWillMount() {
 		var isStart = false;//比赛是否开始
-		axios.post(baseUrl.isStart, {})
-		.then(function (response) {
-		    console.log(response);
-		    isStart = response==="1"?true:false;
-		})
-		.catch(function (response) {
-		    console.log(response);
-		});
-		if(isStart){
-			this.countDownTime()
-			this.setState({
-				isStart:isStart,
-			});
-		}
+		// axios.post(baseUrl.isStart, {})
+		// .then(function (response) {
+		//     console.log(response);
+		//     isStart = response==="1"?true:false;
+		// })
+		// .catch(function (response) {
+		//     console.log(response);
+		// });
+		// if(isStart){
+		// 	this.countDownTime()
+		// 	this.setState({
+		// 		isStart:isStart,
+		// 	});
+		// }
 	}
 	componentDidMount() {
-		if(this.state.isStart){//如果比赛已经开始
-			this.countDownTime();
-		}
+		// if(this.state.isStart){//如果比赛已经开始
+		// 	this.countDownTime();
+		// }
 	}
 	componentDidUpdate() {
-		if(this.state.isStart){//如果比赛开始
-			this.countDownTime();
-		}
+		// if(this.state.isStart){//如果比赛开始
+		// 	this.countDownTime();
+		// }
 	}
 	render() {
 		const teamMess = this.state.subjectList.map((mess,index)=>{

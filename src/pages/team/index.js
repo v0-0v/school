@@ -5,9 +5,10 @@ import baseUrl from '../../config/url.js';
 
 export default class Team extends Component {
 	state = {
-		teamList:[{"id":"001","name":"遥不可及","time":"2018-01-02"},
-				{"id":"002","name":"大智若愚","time":"2018-01-02"},
-				{"id":"003","name":"无坚不摧","time":"2018-01-02"},
+		teamList:[{"id":"d001","name":"遥不可及","time":"2018-01-02"},
+				{"id":"d002","name":"大智若愚","time":"2018-01-02"},
+				{"id":"d003","name":"无坚不摧","time":"2018-01-02"},
+				{"id":"d004","name":"普天同庆","time":"2018-01-92"},
 		],
 		popStyle:{display:"none"},
 		popState:"0",//弹窗状态，0为添加队伍，1为修改信息
@@ -35,8 +36,9 @@ export default class Team extends Component {
 	}
 	handleRemoveTeam = (e,id) => {
 		alert("删除队伍,"+id)
+		//axios.defaults.withCredentials =true;
 		axios.post(baseUrl.deleteTeam, {
-	        id: this.state.useId
+	        id: id
 		})
 		.then(function (response) {
 		    console.log(response);
@@ -87,7 +89,6 @@ export default class Team extends Component {
 	}
 	render() {
 		const teamMess = this.state.teamList.map((mess,index)=>{
-			console.log(mess,index)
 			return(
 				<tr key={index}><td>{mess.id}</td><td>{mess.name}</td><td>{mess.time}</td><td><button onClick={(e,id)=>{this.handleChangeTeam(e,mess.id)}}>修改信息</button><button onClick={(e,id)=>{this.handleRemoveTeam(e,mess.id)}}>删除队伍</button></td></tr>
 			)

@@ -1,12 +1,12 @@
 var apiUrl = {
-  basehostUrl: 'http://192.168.0.103:8080',
+  basehostUrl: 'http://localhost:80/school1',
 }
 
 export default {
 	//参赛队伍管理模块
 	addTeam:apiUrl.basehostUrl+'/AddTeamServlet',//添加队伍
 	updateTeam:apiUrl.basehostUrl+'/UpdateTeamServlet',//修改队伍信息
-	deleteTeam:apiUrl.basehostUrl+'/DeleteTeamServlet',//删除队伍
+	deleteTeam:apiUrl.basehostUrl+'/DeleteTeamServlet.do',//删除队伍
 
 	//题目flag管理模块
 	addFlag:apiUrl.basehostUrl+'/AddFlagServlet',//添加题目

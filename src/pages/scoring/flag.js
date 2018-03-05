@@ -8,49 +8,49 @@ import flagImg from "./img/flag.png";
 
 export default class Flag extends Component {
 	state = {
-		src:[],
-		scoreStyle:[],
-		scoring:[],
-		// src:[down,down,down],//箭头图标
-		// scoreStyle:[{display:"none"},{display:"none"},{display:"none"},],//队伍得分详情显示
-		// scoring:[
-		// 	{
-		// 		team:"遥不可及",
-		// 		flagNum:"2",
-		// 		score:"78",
-		// 		subject:[
-		// 			{id:"140522101",grade:"20"},
-		// 			{id:"140522102",grade:"13"},
-		// 			{id:"140522103",grade:"9"},
-		// 			{id:"140522104",grade:"20"},
-		// 			{id:"140522105",grade:"16"},
-		// 		]
-		// 	},
-		// 	{
-		// 		team:"大智若愚",
-		// 		flagNum:"1",
-		// 		score:"63",
-		// 		subject:[
-		// 			{id:"140522101",grade:"10"},
-		// 			{id:"140522102",grade:"20"},
-		// 			{id:"140522103",grade:"17"},
-		// 			{id:"140522104",grade:"12"},
-		// 			{id:"140522105",grade:"4"},
-		// 		]
-		// 	},
-		// 	{
-		// 		team:"无坚不摧",
-		// 		flagNum:"0",
-		// 		score:"52",
-		// 		subject:[
-		// 			{id:"140522101",grade:"11"},
-		// 			{id:"140522102",grade:"5"},
-		// 			{id:"140522103",grade:"10"},
-		// 			{id:"140522104",grade:"14"},
-		// 			{id:"140522105",grade:"12"},
-		// 		]
-		// 	},
-		// ]
+		// src:[],
+		// scoreStyle:[],
+		// scoring:[],
+		src:[down,down,down],//箭头图标
+		scoreStyle:[{display:"none"},{display:"none"},{display:"none"},],//队伍得分详情显示
+		scoring:[
+			{
+				team:"遥不可及",
+				flagNum:"2",
+				score:"78",
+				subject:[
+					{id:"140522101",grade:"20"},
+					{id:"140522102",grade:"13"},
+					{id:"140522103",grade:"9"},
+					{id:"140522104",grade:"20"},
+					{id:"140522105",grade:"16"},
+				]
+			},
+			{
+				team:"大智若愚",
+				flagNum:"1",
+				score:"63",
+				subject:[
+					{id:"140522101",grade:"10"},
+					{id:"140522102",grade:"20"},
+					{id:"140522103",grade:"17"},
+					{id:"140522104",grade:"12"},
+					{id:"140522105",grade:"4"},
+				]
+			},
+			{
+				team:"无坚不摧",
+				flagNum:"0",
+				score:"52",
+				subject:[
+					{id:"140522101",grade:"11"},
+					{id:"140522102",grade:"5"},
+					{id:"140522103",grade:"10"},
+					{id:"140522104",grade:"14"},
+					{id:"140522105",grade:"12"},
+				]
+			},
+		]
 	}
 	handleTeamClick = (e,indexNum) => {
 		var src = this.state.src;
@@ -75,26 +75,26 @@ export default class Flag extends Component {
 	}
 	componentWillMount() {
 		//设置this.state.scoring和this.state.src与this.state.scoreStyle的个数
-		var scoring = [];
-		var src = [];
-		var scoreStyle = [];
-		axios.post(baseUrl.flag, {})
-		.then(function (response) {
-		    console.log(response);
-		    scoring = response;
-		})
-		.catch(function (response) {
-		    console.log(response);
-		});
-		for(var i=0;i<scoring.length;i++){
-			src.push(down);
-			scoreStyle.push({display:"none"});
-		}
-		this.setState({
-			src:src,
-			scoreStyle:scoreStyle,
-			scoring:scoring,
-		})
+		// var scoring = [];
+		// var src = [];
+		// var scoreStyle = [];
+		// axios.post(baseUrl.flag, {})
+		// .then(function (response) {
+		//     console.log(response);
+		//     scoring = response;
+		// })
+		// .catch(function (response) {
+		//     console.log(response);
+		// });
+		// for(var i=0;i<scoring.length;i++){
+		// 	src.push(down);
+		// 	scoreStyle.push({display:"none"});
+		// }
+		// this.setState({
+		// 	src:src,
+		// 	scoreStyle:scoreStyle,
+		// 	scoring:scoring,
+		// })
 	}
 	render() {
 		const scoreMess = this.state.scoring.map((mess,index)=>{
